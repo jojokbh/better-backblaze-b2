@@ -1,0 +1,92 @@
+{
+  "name": "better-b2",
+  "version": "2.0.0",
+  "description": "Modern Node.js Library for the Backblaze B2 Storage Service",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE-MIT"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "dev": "vite build --watch",
+    "clean": "rm -rf dist coverage",
+    "test": "vitest run",
+    "test:unit": "vitest run test/unit",
+    "test:integration": "vitest run test/integration",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:unit": "vitest run --coverage test/unit",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "lint:test": "eslint test --fix",
+    "format": "prettier --write src/**/*.{js,ts} test/**/*.{js,ts}",
+    "format:check": "prettier --check src/**/*.{js,ts} test/**/*.{js,ts}",
+    "gen-types":"npx tsc src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir types",
+    "type-check": "tsc --noEmit",
+    "validate": "npm run type-check && npm run lint && npm run format:check",
+    "ci": "npm run clean && npm run validate && npm run build && npm run test:unit",
+    "prepublishOnly": "npm run ci && npm run test:coverage"
+  },
+  "keywords": [
+    "backblaze",
+    "b2",
+    "storage",
+    "cloud",
+    "api",
+    "fetch",
+    "modern",
+    "esm"
+  ],
+  "homepage": "https://github.com/jojokbh/backblaze-b2",
+  "author": {
+    "name": "Jonas Hansen",
+    "email": "jojokbh@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jojokbh/better-b2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jojokbh/better-b2/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "terser": "^5.43.1",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.5.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  }
+}
