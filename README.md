@@ -53,7 +53,7 @@ Each action (see reference below) takes arguments and constructs an axios reques
 ### Reference
 
 ```javascript
-const B2 = require('backblaze-b2');
+import { B2 } from 'better-b2';
 
 // All functions on the b2 instance return the response from the B2 API in the success callback
 // i.e. b2.foo(...).then((b2JsonResponse) => {})
